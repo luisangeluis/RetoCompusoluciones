@@ -1,9 +1,51 @@
+* {
+  /* border: solid 1px red; */
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 a {
-  font-weight: 500;
+  font-weight: 300;
   color: #646cff;
   text-decoration: inherit;
+}
+
+body,
+#root,
+.App {
+  min-height: 100vh;
+}
+
+/********************HEADER********************/
+.header-container {
+  min-height: 5rem;
+}
+.navbar {
+  min-height: inherit;
+  padding: 1.5rem 0;
+}
+.navbar-brand {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.navbar-toggler {
+  padding: 0.1em;
+}
+
+/********************QUERYS********************/
+@media screen and (min-width: 576px) {
+  /********************HEADER********************/
+  .navbar-brand {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bolder;
+  }
+  .navbar-toggler {
+    padding: 0.3em;
+  }
 }
