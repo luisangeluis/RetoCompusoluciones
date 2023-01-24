@@ -1,14 +1,21 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setShowModal } from '../../store/slices/showModal.slice';
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const showModal = () => dispatch(setShowModal(true));
+  // console.log();
   return (
     <section className="header">
       <div className="container-fluid header-container">
-        <nav class="navbar navbar-expand-lg bg-light">
-          <div class="container-fluid navbar-container">
-            <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg bg-light">
+          <div className="container-fluid navbar-container">
+            <a className="navbar-brand" href="#">
               EMPRESAS
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -16,19 +23,21 @@ const Header = () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="#">
                     Home
                   </a>
                 </li>
               </ul>
               <ul className="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <button className="btn btn-primary">Agregar empresa +</button>
+                <li className="nav-item">
+                  <button className="btn btn-primary" onClick={showModal}>
+                    Agregar empresa +
+                  </button>
                 </li>
               </ul>
             </div>
