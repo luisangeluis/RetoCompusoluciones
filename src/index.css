@@ -25,16 +25,24 @@ body,
 }
 
 /********************HEADER********************/
-.header-container {
+.header {
   min-height: 5rem;
+}
+.header-container {
+  min-height: inherit;
 }
 .navbar {
   min-height: inherit;
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
+  font-size: 1.5rem;
+}
+.navbar-nav {
+  /* font-weight: bold; */
+  /* font-size: 1.3rem; */
 }
 .navbar-brand {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.8rem;
   font-weight: bolder;
 }
 
@@ -43,6 +51,10 @@ body,
 }
 
 /********************Modal********************/
+.form-modal {
+  /* animation: fromLeftAnimation 2s;
+  opacity: 1; */
+}
 .datalist-empresa {
   background-color: red;
 }
@@ -51,16 +63,33 @@ body,
 }
 .modal-container {
   width: 90%;
+  animation: fromLeftAnimation 1.2s;
+  opacity: 1;
 }
+/********************Animations********************/
+@keyframes fromLeftAnimation {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0.33;
+  }
 
+  50% {
+    transform: translateY(3px);
+    opacity: 0.66;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 /********************QUERYS********************/
 @media screen and (min-width: 576px) {
   /********************HEADER********************/
-  .navbar-brand {
-    margin: 0;
-    font-size: 2em;
-    font-weight: bolder;
+  .navbar {
+    padding: 1.5rem 0;
   }
+
   .navbar-toggler {
     padding: 0.3em;
   }
@@ -73,6 +102,13 @@ body,
   }
 }
 @media screen and (min-width: 992px) {
+  /********************Header********************/
+  .header {
+    min-height: 2.5rem;
+  }
+  .navbar {
+    padding: 1.25rem 0;
+  }
   /********************Modal********************/
   .modal-container {
     width: 30%;

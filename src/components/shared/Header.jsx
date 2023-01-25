@@ -9,9 +9,9 @@ const Header = () => {
   return (
     <section className="header">
       <div className="container-fluid header-container">
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-light fw-bolder">
           <div className="container navbar-container">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand fw-bold" href="#">
               EMPRESAS
             </a>
             <button
@@ -26,10 +26,10 @@ const Header = () => {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+              <ul className="navbar-nav p-2 p-md-3">
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Inicio
                   </a>
                 </li>
               </ul>

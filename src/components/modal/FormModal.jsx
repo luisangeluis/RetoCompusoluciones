@@ -31,11 +31,9 @@ const FormModal = () => {
 
   const closeModal = () => dispatch(setShowModal(false));
   const sendForm = (data) => console.log(data);
-
-  console.log(watch);
-
+  // console.log(watch);
   return (
-    <section className="form-modal position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
+    <section className="form-modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
       <div className="container bg-light rounded p-2 p-md-3 modal-container">
         <button
           onClick={closeModal}
