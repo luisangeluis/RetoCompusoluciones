@@ -10,7 +10,7 @@ const Header = () => {
     <section className="header">
       <div className="container-fluid header-container">
         <nav className="navbar navbar-expand-lg bg-light">
-          <div className="container-fluid navbar-container">
+          <div className="container navbar-container">
             <a className="navbar-brand" href="#">
               EMPRESAS
             </a>

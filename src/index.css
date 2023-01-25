@@ -19,6 +19,11 @@ body,
   min-height: 100vh;
 }
 
+.btn-close {
+  display: block;
+  margin-left: auto;
+}
+
 /********************HEADER********************/
 .header-container {
   min-height: 5rem;

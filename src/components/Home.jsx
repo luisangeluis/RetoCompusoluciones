@@ -4,7 +4,7 @@ import FormModal from './modal/FormModal';
 
 const Home = () => {
   const isShowForm = useSelector((state) => state.showModal);
-  console.log(isShowForm);
+  // console.log(isShowForm);
   return (
     <section className="home flex-grow-1">
       <div className="container"></div>
