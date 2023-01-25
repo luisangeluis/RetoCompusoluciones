@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <section className="header">
       <div className="container-fluid header-container">
-        <nav className="navbar navbar-expand-lg bg-light fw-bolder">
+        <nav className="navbar navbar-expand-lg fw-bolder">
           <div className="container navbar-container">
             <a className="navbar-brand fw-bold" href="#">
               EMPRESAS
@@ -35,7 +35,7 @@ const Header = () => {
               </ul>
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <button className="btn btn-primary" onClick={showModal}>
+                  <button className="btn bg-color-three" onClick={showModal}>
                     Agregar empresa +
                   </button>
                 </li>

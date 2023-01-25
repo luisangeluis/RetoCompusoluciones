@@ -34,7 +34,7 @@ const FormModal = () => {
   // console.log(watch);
   return (
     <section className="form-modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
-      <div className="container bg-light rounded p-2 p-md-3 modal-container">
+      <div className="container  bg-color-four bg-light rounded p-2 p-md-3 modal-container">
         <button
           onClick={closeModal}
           className="btn btn-outline-secondary my-2 btn-close"
@@ -109,7 +109,11 @@ const FormModal = () => {
           </div>
           {/* Submit */}
           <div className="mb-3">
-            <input type="submit" className="btn btn-primary" value="submit" />
+            <input
+              type="submit"
+              className="btn bg-color-three"
+              value="Enviar"
+            />
             <button onClick={closeModal} className="btn btn-secondary">
               Cancelar
             </button>

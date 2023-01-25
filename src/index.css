@@ -12,7 +12,19 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
-
+body {
+  background: #283048; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #dcd7c9,
+    /* #28304810 */ #a27b5c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #dcd7c9,
+    /* #28304810 */ #3f4e4f80
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 body,
 #root,
 .App {
@@ -23,10 +35,23 @@ body,
   display: block;
   margin-left: auto;
 }
+.bg-color-one {
+  background-color: #2c3639;
+}
+.bg-color-two {
+  background-color: #3f4e4f;
+}
+.bg-color-three {
+  background-color: #a27b5c;
+}
+.bg-color-four {
+  background-color: #dcd7c9;
+}
 
 /********************HEADER********************/
 .header {
   min-height: 5rem;
+  background-color: #3f4e4f;
 }
 .header-container {
   min-height: inherit;
@@ -49,22 +74,28 @@ body,
 .navbar-toggler {
   padding: 0.1em;
 }
-
-/********************Modal********************/
-.form-modal {
-  /* animation: fromLeftAnimation 2s;
-  opacity: 1; */
+/********************Table********************/
+.table-responsive {
+  background-color: #fff;
 }
+/********************Modal********************/
+
 .datalist-empresa {
   background-color: red;
 }
 .form-modal {
-  background-color: #0f0f0f90;
+  background-color: #2c363980;
 }
 .modal-container {
   width: 90%;
   animation: fromLeftAnimation 1.2s;
   opacity: 1;
+}
+/********************Modal********************/
+.footer {
+  min-height: 5rem;
+  color: #f0f0f0;
+  background-color: #212529;
 }
 /********************Animations********************/
 @keyframes fromLeftAnimation {

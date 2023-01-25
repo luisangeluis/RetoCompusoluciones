@@ -1,6 +1,6 @@
 const CompanyTable = ({ companies }) => {
   return (
-    <div className="table-responsive my-3 my-md-4">
+    <div className="table-responsive my-3 my-md-4 p-2 p-md-3 rounded-3">
       <table className="table company-table table-striped">
         <thead>
           <tr>
