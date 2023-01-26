@@ -12,7 +12,7 @@ const companySchema = yup.object({
   constitutionDate: yup
     .date()
     .required('Este campo es requerido')
-    .max(new Date(), 'La fecha debe ser menor a la actual'),
+    .max(new Date(), 'La fecha debe ser igual o menor a la actual'),
   companyType: yup.string().required('Este campo es requerido'),
   comments: yup.string().max(1020),
 });
