@@ -17,12 +17,12 @@ body {
   background: -webkit-linear-gradient(
     to top,
     #dcd7c9,
-    /* #28304810 */ #a27b5c
+    #a27b5c
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
     #dcd7c9,
-    /* #28304810 */ #3f4e4f80
+    #3f4e4f99
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 body,
