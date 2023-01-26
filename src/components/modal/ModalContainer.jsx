@@ -13,9 +13,13 @@ const ModalContainer = ({ modal, action }) => {
   // console.log(addModal);
   const makeModal = (addModal) => {
     if (addModal.modal == 'FormModal')
-      return <FormModal action={`${addModal.action}`} cancel={closeModal} />;
+      return (
+        <FormModal action={`${addModal.action}`} closeModal={closeModal} />
+      );
     if (addModal.modal == 'DeleteModal')
-      return <DeleteModal action={`${addModal.action}`} cancel={closeModal} />;
+      return (
+        <DeleteModal action={`${addModal.action}`} closeModal={closeModal} />
+      );
   };
 
   const onKeyPressed = (e) => {

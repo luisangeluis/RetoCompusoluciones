@@ -2,6 +2,8 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useEffect, useReducer, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 //Form schema
 const companySchema = yup.object({
@@ -17,7 +19,10 @@ const companySchema = yup.object({
   comments: yup.string().max(1020),
 });
 
-const FormModal = ({ action, cancel }) => {
+//Component
+const FormModal = ({ action, closeModal }) => {
+  const form = useRef();
+  const company = useSelector((state) => state.setItem);
   const {
     register,
     handleSubmit,
@@ -26,15 +31,23 @@ const FormModal = ({ action, cancel }) => {
     resolver: yupResolver(companySchema),
   });
 
+  useEffect(() => {
+    if (action === 'update') {
+      form.current.name.value = company.name;
+    }
+  }, [action]);
+
   const sendForm = (data) => {
     console.log(data);
     if (action === 'create') console.log('creating');
-    if (action === 'update') console.log('editing');
-    cancel();
+    if (action === 'update') {
+      console.log('editing');
+    }
+    closeModal();
   };
   return (
     <>
-      <form className=" modal-sm" onSubmit={handleSubmit(sendForm)}>
+      <form className=" modal-sm" onSubmit={handleSubmit(sendForm)} ref={form}>
         {/*Name */}
         <div className="form-floating mb-3">
           <input
@@ -105,7 +118,7 @@ const FormModal = ({ action, cancel }) => {
         {/* Submit */}
         <div className="mb-3">
           <input type="submit" className="btn bg-color-three" value="Enviar" />
-          <button onClick={cancel} className="btn btn-secondary">
+          <button onClick={closeModal} className="btn btn-secondary">
             Cancelar
           </button>
         </div>

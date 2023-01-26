@@ -1,4 +1,4 @@
-const DeleteModal = ({ action, cancel }) => {
+const DeleteModal = ({ action, closeModal }) => {
   const deleteItem = () => {
     console.log('deleting');
     cancel();
@@ -13,7 +13,7 @@ const DeleteModal = ({ action, cancel }) => {
         <button onClick={deleteItem} className="btn bg-color-three mx-1">
           Si
         </button>
-        <button onClick={cancel} className="btn btn-secondary mx-1">
+        <button onClick={closeModal} className="btn btn-secondary mx-1">
           No
         </button>
       </div>

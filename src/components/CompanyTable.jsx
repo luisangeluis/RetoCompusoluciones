@@ -2,12 +2,14 @@
 import { useDispatch } from 'react-redux';
 //Slices
 import { setAddModal } from '../store/slices/addModal.slice';
+import { setItem } from '../store/slices/setItem.slice';
 import { setShowModal } from '../store/slices/showModal.slice';
 
 const CompanyTable = ({ companies }) => {
   const dispatch = useDispatch();
 
-  const showModal = (modal, action) => {
+  const showModal = (modal, action, item) => {
+    dispatch(setItem(item));
     dispatch(setAddModal({ modal, action }));
     dispatch(setShowModal(true));
   };
@@ -29,10 +31,18 @@ const CompanyTable = ({ companies }) => {
             <td>Mark</td>
             <td>Otto</td>
             <td>
-              <button onClick={() => showModal('DeleteModal', 'delete')}>
+              <button
+                onClick={() =>
+                  showModal('DeleteModal', 'delete', { name: 'luis' })
+                }
+              >
                 borrar
               </button>
-              <button onClick={() => showModal('FormModal', 'update')}>
+              <button
+                onClick={() =>
+                  showModal('FormModal', 'update', { name: 'luis' })
+                }
+              >
                 Actualizar
               </button>
             </td>
