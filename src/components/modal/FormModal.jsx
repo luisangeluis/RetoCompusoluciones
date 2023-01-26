@@ -30,6 +30,7 @@ const FormModal = ({ action, cancel }) => {
     console.log(data);
     if (action === 'create') console.log('creating');
     if (action === 'update') console.log('editing');
+    cancel();
   };
   return (
     <>

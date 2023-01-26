@@ -1,6 +1,7 @@
 const DeleteModal = ({ action, cancel }) => {
   const deleteItem = () => {
     console.log('deleting');
+    cancel();
   };
 
   return (

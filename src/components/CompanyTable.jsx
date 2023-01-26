@@ -32,6 +32,9 @@ const CompanyTable = ({ companies }) => {
               <button onClick={() => showModal('DeleteModal', 'delete')}>
                 borrar
               </button>
+              <button onClick={() => showModal('FormModal', 'update')}>
+                Actualizar
+              </button>
             </td>
           </tr>
         </tbody>
