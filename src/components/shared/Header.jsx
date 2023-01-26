@@ -2,19 +2,19 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 //Slices
-import addModalSlice from '../../store/slices/addModal.slice';
+import { setAddModal } from '../../store/slices/addModal.slice';
 import { setShowModal } from '../../store/slices/showModal.slice';
 const Header = () => {
   const dispatch = useDispatch();
 
   const showModal = (modal, action) => {
-    dispatch(addModalSlice({ modal, action }));
+    dispatch(setAddModal({ modal, action }));
     dispatch(setShowModal(true));
   };
 
-  const addCompany = () => {
-    console.log('adding...');
-  };
+  // const addCompany = () => {
+  //   console.log('adding...');
+  // };
 
   // console.log();
   return (
@@ -48,9 +48,7 @@ const Header = () => {
                 <li className="nav-item">
                   <button
                     className="btn bg-color-three"
-                    onClick={(e, FormModal, addCompany) =>
-                      showModal(FormModal, addCompany)
-                    }
+                    onClick={() => showModal('FormModal', 'create')}
                   >
                     Agregar empresa +
                   </button>

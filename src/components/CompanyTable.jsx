@@ -1,4 +1,17 @@
+//Dependencies
+import { useDispatch } from 'react-redux';
+//Slices
+import { setAddModal } from '../store/slices/addModal.slice';
+import { setShowModal } from '../store/slices/showModal.slice';
+
 const CompanyTable = ({ companies }) => {
+  const dispatch = useDispatch();
+
+  const showModal = (modal, action) => {
+    dispatch(setAddModal({ modal, action }));
+    dispatch(setShowModal(true));
+  };
+
   return (
     <div className="table-responsive my-3 my-md-4 p-2 p-md-3 rounded-3">
       <table className="table company-table table-striped">
@@ -15,7 +28,11 @@ const CompanyTable = ({ companies }) => {
             <th scope="row">Uno</th>
             <td>Mark</td>
             <td>Otto</td>
-            <td>@mdo</td>
+            <td>
+              <button onClick={() => showModal('DeleteModal', 'delete')}>
+                borrar
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -18,28 +18,27 @@ const companySchema = yup.object({
   comments: yup.string().max(1020),
 });
 
-const FormModal = () => {
+const FormModal = ({ action }) => {
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(companySchema),
   });
-
   const closeModal = () => dispatch(setShowModal(false));
-  const sendForm = (data) => console.log(data);
+
+  const sendForm = (data) => {
+    console.log(data);
+    if (action === 'create') console.log('creating');
+    if (action === 'update') console.log('editing');
+  };
   // console.log(watch);
   return (
     // <section className="form-modal modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
     //   <div className="container bg-color-four rounded p-2 p-md-3 modal-container">
     <>
-      <button
-        onClick={closeModal}
-        className="btn btn-outline-secondary my-2 btn-close"
-      ></button>
       <form className=" modal-sm" onSubmit={handleSubmit(sendForm)}>
         {/*Name */}
         <div className="form-floating mb-3">

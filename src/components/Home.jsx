@@ -4,6 +4,7 @@ import { useState } from 'react';
 //Components
 import FormModal from './modal/FormModal';
 import CompanyTable from './CompanyTable';
+import ModalContainer from './modal/ModalContainer';
 
 const Home = () => {
   const isShowForm = useSelector((state) => state.showModal);
@@ -20,7 +21,7 @@ const Home = () => {
         </div>
         <div className="row"></div>
       </div>
-      {isShowForm && <FormModal />}
+      {isShowForm && <ModalContainer />}
     </section>
   );
 };
