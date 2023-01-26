@@ -18,7 +18,7 @@ const CompanyTable = ({ companies }) => {
     <div className="table-responsive my-3 my-md-4 p-2 p-md-3 rounded-3">
       <table className="table company-table table-striped">
         <thead>
-          <tr>
+          <tr className="text-center">
             <th scope="col">Nombre</th>
             <th scope="col">Tipo de empresa</th>
             <th scope="col">Fecha de constitución</th>
@@ -26,15 +26,16 @@ const CompanyTable = ({ companies }) => {
           </tr>
         </thead>
         <tbody className="table-group-divider">
-          <tr>
+          <tr className="text-center">
             <th scope="row">Uno</th>
             <td>Mark</td>
             <td>Otto</td>
-            <td>
+            <td className="text-center d-flex flex-nowrap justify-content-center">
               <button
                 onClick={() =>
                   showModal('DeleteModal', 'delete', { name: 'luis' })
                 }
+                className="btn btn-danger mx-1"
               >
                 borrar
               </button>
@@ -42,6 +43,7 @@ const CompanyTable = ({ companies }) => {
                 onClick={() =>
                   showModal('FormModal', 'update', { name: 'luis' })
                 }
+                className="btn bg-color-three mx-1"
               >
                 Actualizar
               </button>
