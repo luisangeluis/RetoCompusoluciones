@@ -1,10 +1,13 @@
-//Components
+//Dependencies
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+//Components
 import FormModal from './modal/FormModal';
 import CompanyTable from './CompanyTable';
 
 const Home = () => {
   const isShowForm = useSelector((state) => state.showModal);
+  const [myAction, setMyAction] = useState();
   // console.log(isShowForm);
 
   return (

@@ -1,10 +1,21 @@
+//Dependencies
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+//Slices
+import addModalSlice from '../../store/slices/addModal.slice';
 import { setShowModal } from '../../store/slices/showModal.slice';
 const Header = () => {
   const dispatch = useDispatch();
 
-  const showModal = () => dispatch(setShowModal(true));
+  const showModal = (modal, action) => {
+    dispatch(addModalSlice({ modal, action }));
+    dispatch(setShowModal(true));
+  };
+
+  const addCompany = () => {
+    console.log('adding...');
+  };
+
   // console.log();
   return (
     <section className="header">
@@ -35,7 +46,12 @@ const Header = () => {
               </ul>
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <button className="btn bg-color-three" onClick={showModal}>
+                  <button
+                    className="btn bg-color-three"
+                    onClick={(e, FormModal, addCompany) =>
+                      showModal(FormModal, addCompany)
+                    }
+                  >
                     Agregar empresa +
                   </button>
                 </li>
