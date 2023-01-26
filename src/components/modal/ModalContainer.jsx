@@ -16,9 +16,9 @@ const ModalContainer = ({ modal, action }) => {
 
   const makeModal = (addModal) => {
     if (addModal.modal == 'FormModal')
-      return <FormModal action={`${addModal.action}`} />;
+      return <FormModal action={`${addModal.action}`} cancel={closeModal} />;
     if (addModal.modal == 'DeleteModal')
-      return <DeleteModal action={`${addModal.action}`} />;
+      return <DeleteModal action={`${addModal.action}`} cancel={closeModal} />;
   };
 
   return (

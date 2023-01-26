@@ -1,6 +1,5 @@
-import { useDispatch } from 'react-redux';
+//Dependencies
 import { useForm } from 'react-hook-form';
-import { setShowModal } from '../../store/slices/showModal.slice';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -18,8 +17,7 @@ const companySchema = yup.object({
   comments: yup.string().max(1020),
 });
 
-const FormModal = ({ action }) => {
-  const dispatch = useDispatch();
+const FormModal = ({ action, cancel }) => {
   const {
     register,
     handleSubmit,
@@ -27,17 +25,13 @@ const FormModal = ({ action }) => {
   } = useForm({
     resolver: yupResolver(companySchema),
   });
-  const closeModal = () => dispatch(setShowModal(false));
 
   const sendForm = (data) => {
     console.log(data);
     if (action === 'create') console.log('creating');
     if (action === 'update') console.log('editing');
   };
-  // console.log(watch);
   return (
-    // <section className="form-modal modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
-    //   <div className="container bg-color-four rounded p-2 p-md-3 modal-container">
     <>
       <form className=" modal-sm" onSubmit={handleSubmit(sendForm)}>
         {/*Name */}
@@ -110,15 +104,12 @@ const FormModal = ({ action }) => {
         {/* Submit */}
         <div className="mb-3">
           <input type="submit" className="btn bg-color-three" value="Enviar" />
-          <button onClick={closeModal} className="btn btn-secondary">
+          <button onClick={cancel} className="btn btn-secondary">
             Cancelar
           </button>
         </div>
       </form>
     </>
-
-    //   </div>
-    // </section>
   );
 };
 
