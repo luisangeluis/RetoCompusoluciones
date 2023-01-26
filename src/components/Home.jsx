@@ -6,6 +6,7 @@ import CompanyTable from './CompanyTable';
 const Home = () => {
   const isShowForm = useSelector((state) => state.showModal);
   // console.log(isShowForm);
+
   return (
     <section className="home flex-grow-1">
       <div className="container">
@@ -14,30 +15,7 @@ const Home = () => {
             <CompanyTable />
           </div>
         </div>
-        <div className="row">
-          <div className="col-12">
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-            <p>hello</p>
-          </div>
-        </div>
+        <div className="row"></div>
       </div>
       {isShowForm && <FormModal />}
     </section>

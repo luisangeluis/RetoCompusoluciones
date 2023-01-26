@@ -33,8 +33,8 @@ const FormModal = () => {
   const sendForm = (data) => console.log(data);
   // console.log(watch);
   return (
-    <section className="form-modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
-      <div className="container  bg-color-four bg-light rounded p-2 p-md-3 modal-container">
+    <section className="form-modal modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100">
+      <div className="container bg-color-four rounded p-2 p-md-3 modal-container">
         <button
           onClick={closeModal}
           className="btn btn-outline-secondary my-2 btn-close"
