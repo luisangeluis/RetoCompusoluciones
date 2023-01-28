@@ -60,27 +60,21 @@ const FormModal = ({ action, closeModal }) => {
   const postCompany = (params) => {
     axios.post(`${baseUrl}/api/v1/companies`, params)
       .then(res => {
-        console.log(res)
-        dispatch(getCompanies())
+        console.log(res);
+        dispatch(getCompanies());
       })
       .catch(error => console.log(error))
   }
 
   const editCompany=(id,params)=>{
     axios.put(`${baseUrl}/api/v1/companies/${id}`,params)
-      .then(res=>console.log(res))
+      .then(res=>{
+        console.log(res);
+        dispatch(getCompanies());
+      })
       .catch(error=>console.log(error))
   }
 
-  // const getCompanies = () => {
-  //   axios.get(`${baseUrl}/api/v1/companies`)
-  //     .then(res => {
-  //       console.log(res.data.response);
-  //       // setCompanies(res.data.response)
-  //     })
-  //     .catch(error => console.log(error))
-  // }
-  
   const makeSelect = (items) => {
     return (
       <>

@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 //Slice
-import { getCompanies } from '../store/slices/getCompanies.slice';
+import  { getCompanies } from '../store/slices/getCompanies.slice';
 //Components
 import CompanyTable from './CompanyTable';
 import ModalContainer from './modal/ModalContainer';
@@ -12,6 +12,10 @@ const Home = () => {
   const isShowForm = useSelector((state) => state.showModal);
   const allCompanies = useSelector(state=> state.getCompanies);
   const [companies,setCompanies] = useState();
+
+  useEffect(()=>{
+    dispatch(getCompanies())
+  } ,[])
   
   return (
     <section className="home flex-grow-1">

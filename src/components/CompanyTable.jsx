@@ -9,8 +9,8 @@ import { setShowModal } from '../store/slices/showModal.slice';
 
 const CompanyTable = () => {
   const dispatch = useDispatch();
-  const [companies] = useGetCompanies();
-  // const companies = useSelector(state=>state.getCompanies)
+  // const [companies] = useGetCompanies();
+  const companies = useSelector(state=>state.getCompanies)
 
   const showModal = (modal, action, item) => {
     dispatch(setItem(item));

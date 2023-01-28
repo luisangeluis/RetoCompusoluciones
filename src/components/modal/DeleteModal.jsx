@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 //Slice
-import { removeCompany } from "../../store/slices/getCompanies.slice";
+import { getCompanies, removeCompany } from "../../store/slices/getCompanies.slice";
 
 //Base url
 const baseUrl = 'http://localhost:3000';
@@ -14,17 +14,20 @@ const DeleteModal = ({ action, closeModal }) => {
   const deleteItem = (company) => {
     const id = company.id;
     console.log(company);
-    // remove(id);
-    dispatch(removeCompany(id));
+    remove(id);
     console.log('deleting');
     closeModal();
   };
 
-  // const remove=(id)=>{
-  //   axios.delete(`${baseUrl}/api/v1/companies/${id}`)
-  //     .then(res=> console.log(res))
-  //     .catch(error=>console.log(error))
-  // }
+  const remove=(id)=>{
+    axios.delete(`${baseUrl}/api/v1/companies/${id}`)
+      .then(res=> {
+        console.log(res)
+        dispatch(getCompanies());
+
+      })
+      .catch(error=>console.log(error))
+  }
 
   return (
     <article className="card p-2 p-md-3">
