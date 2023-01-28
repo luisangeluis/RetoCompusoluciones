@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 //Slice
 import { getCompanies, removeCompany } from "../../store/slices/getCompanies.slice";
+import { setShowNotification } from "../../store/slices/showNotification.slice";
 
 //Base url
 const baseUrl = 'http://localhost:3000';
@@ -22,11 +23,16 @@ const DeleteModal = ({ action, closeModal }) => {
   const remove=(id)=>{
     axios.delete(`${baseUrl}/api/v1/companies/${id}`)
       .then(res=> {
-        console.log(res)
+        // console.log(res)
+        dispatch(setShowNotification({message:'Item borrado',show:true}));
         dispatch(getCompanies());
-
       })
       .catch(error=>console.log(error))
+      .finally(()=>{
+        setTimeout(()=>{
+          dispatch(setShowNotification({message:'',show:false}))
+        },1500)
+      });
   }
 
   return (

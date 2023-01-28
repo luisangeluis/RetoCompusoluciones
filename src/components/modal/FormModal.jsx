@@ -4,10 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useEffect, useReducer, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+//Slices
+import { getCompanies } from '../../store/slices/getCompanies.slice';
+import { setShowNotification } from '../../store/slices/showNotification.slice';
 //Hooks
 import useGetCompanyTypes from '../../hooks/useGetCompanyTypes';
-import axios from 'axios';
-import { getCompanies } from '../../store/slices/getCompanies.slice';
 //Form schema
 const companySchema = yup.object({
   name: yup
@@ -50,7 +52,7 @@ const FormModal = ({ action, closeModal }) => {
   const sendForm = (data) => {
     console.log(data);
     if (action === 'create') {
-      console.log('creating')
+      // console.log('creating')
       postCompany(data)
     };
     if (action === 'update') {
@@ -63,19 +65,31 @@ const FormModal = ({ action, closeModal }) => {
   const postCompany = (params) => {
     axios.post(`${baseUrl}/api/v1/companies`, params)
       .then(res => {
-        console.log(res);
+        // console.log(res);
+        dispatch(setShowNotification({message:'Item Agregado',show:true}));
         dispatch(getCompanies());
       })
       .catch(error => console.log(error))
+      .finally(()=>{
+        setTimeout(()=>{
+          dispatch(setShowNotification({message:'',show:false}))
+        },1500)
+      });
   }
 
   const editCompany = (id, params) => {
     axios.put(`${baseUrl}/api/v1/companies/${id}`, params)
       .then(res => {
-        console.log(res);
+        // console.log(res);
+        dispatch(setShowNotification({message:'Item Editado',show:true}));
         dispatch(getCompanies());
       })
       .catch(error => console.log(error))
+      .finally(()=>{
+        setTimeout(()=>{
+          dispatch(setShowNotification({message:'',show:false}))
+        },30000)
+      });
   }
 
   const makeSelect = (items) => {

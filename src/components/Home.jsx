@@ -6,12 +6,14 @@ import  { getCompanies } from '../store/slices/getCompanies.slice';
 //Components
 import CompanyTable from './CompanyTable';
 import ModalContainer from './modal/ModalContainer';
+import Notification from './modal/Notification';
 
 const Home = () => {
   const dispatch = useDispatch();
   const isShowForm = useSelector((state) => state.showModal);
+  const showNotification =useSelector(state=>state.showNotification);
   const allCompanies = useSelector(state=> state.getCompanies);
-  const [companies,setCompanies] = useState();
+  // const [companies,setCompanies] = useState();
 
   useEffect(()=>{
     dispatch(getCompanies())
@@ -28,6 +30,7 @@ const Home = () => {
         <div className="row"></div>
       </div>
       {isShowForm && <ModalContainer />}
+      {showNotification?.show ? <Notification message={showNotification.message}/>:''}
     </section>
   );
 };
