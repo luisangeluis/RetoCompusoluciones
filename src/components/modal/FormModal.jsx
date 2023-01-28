@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useEffect, useReducer, useRef } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+//Hooks
+import useGetCompanyTypes from '../../hooks/useGetCompanyTypes';
+import axios from 'axios';
+import {getCompanies} from '../../store/slices/getCompanies.slice';
 //Form schema
 const companySchema = yup.object({
   name: yup
@@ -13,38 +16,80 @@ const companySchema = yup.object({
     .max(255, 'Tu nombre debe tener menos de 255 caracteres'),
   constitutionDate: yup
     .date()
-    .required('Este campo es requerido')
-    .max(new Date(), 'La fecha debe ser igual o menor a la actual'),
-  companyType: yup.string().required('Este campo es requerido'),
+    .required('Este campo es requerido'),
+  typeId: yup
+    .string()
+    .required('Este campo es requerido'),
   comments: yup.string().max(1020),
 });
 
+//Base url
+const baseUrl = 'http://localhost:3000';
+
 //Component
 const FormModal = ({ action, closeModal }) => {
+  const [companyTypes] = useGetCompanyTypes();
   const form = useRef();
   const company = useSelector((state) => state.setItem);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const dispatch = useDispatch();
+  const { register, handleSubmit, formState: { errors }, } = useForm({
     resolver: yupResolver(companySchema),
   });
 
   useEffect(() => {
     if (action === 'update') {
       form.current.name.value = company.name;
+      form.current.constitutionDate.value = company.constitutionDate;
+      form.current.comments.value = company.comments;
     }
-  }, [action]);
+  }, []);
 
   const sendForm = (data) => {
     console.log(data);
-    if (action === 'create') console.log('creating');
+    if (action === 'create') {
+      console.log('creating')
+      postCompany(data)
+    };
     if (action === 'update') {
-      console.log('editing');
+
+      editCompany(company.id,data)
     }
     closeModal();
   };
+
+  const postCompany = (params) => {
+    axios.post(`${baseUrl}/api/v1/companies`, params)
+      .then(res => {
+        console.log(res)
+        dispatch(getCompanies())
+      })
+      .catch(error => console.log(error))
+  }
+
+  const editCompany=(id,params)=>{
+    axios.put(`${baseUrl}/api/v1/companies/${id}`,params)
+      .then(res=>console.log(res))
+      .catch(error=>console.log(error))
+  }
+
+  // const getCompanies = () => {
+  //   axios.get(`${baseUrl}/api/v1/companies`)
+  //     .then(res => {
+  //       console.log(res.data.response);
+  //       // setCompanies(res.data.response)
+  //     })
+  //     .catch(error => console.log(error))
+  // }
+  
+  const makeSelect = (items) => {
+    return (
+      <>
+        <option value="" defaultValue>Seleciona un valor</option>
+        {items.map((item, i) => <option value={item.id} key={item.id}>{item.name}</option >)}
+      </>
+    )
+  }
+  
   return (
     <>
       <form className=" modal-sm" onSubmit={handleSubmit(sendForm)} ref={form}>
@@ -55,6 +100,7 @@ const FormModal = ({ action, closeModal }) => {
             placeholder="name"
             aria-describedby="name"
             {...register('name')}
+            autoFocus
           />
           <label htmlFor="name">Nombre</label>
           {errors.name?.message && (
@@ -90,14 +136,17 @@ const FormModal = ({ action, closeModal }) => {
             id="company-type"
             className="select-company form-select-sm d-block w-100"
             aria-label="Select your type of company"
-            {...register('companyType')}
+            {...register('typeId')}
           >
-            <option value="1" defaultValue>
-              One
-            </option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            {
+              companyTypes && makeSelect(companyTypes)
+            }
           </select>
+          {errors.typeId?.message && (
+            <div className="alert alert-primary my-2 p-1" role="alert">
+              {errors.typeId.message}
+            </div>
+          )}
         </div>
         {/*Comments*/}
         <div className="form-floating mb-3">
