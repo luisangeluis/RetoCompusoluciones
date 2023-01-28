@@ -9,7 +9,6 @@ import DeleteModal from './DeleteModal';
 const ModalContainer = ({ modal, action }) => {
   const dispatch = useDispatch();
   const addModal = useSelector((state) => state.addModal);
-  const closeModal = () => dispatch(setShowModal(false));
   // console.log(addModal);
   const makeModal = (addModal) => {
     if (addModal.modal == 'FormModal')
@@ -22,9 +21,11 @@ const ModalContainer = ({ modal, action }) => {
       );
   };
 
-  const onKeyPressed = (e) => {
-    console.log(e.key);
-  };
+  const closeModal = () => {
+    dispatch(setShowModal(false))
+  }
+
+  
 
   return (
     <section

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //Hooks
 import useGetCompanyTypes from '../../hooks/useGetCompanyTypes';
 import axios from 'axios';
-import {getCompanies} from '../../store/slices/getCompanies.slice';
+import { getCompanies } from '../../store/slices/getCompanies.slice';
 //Form schema
 const companySchema = yup.object({
   name: yup
@@ -32,15 +32,18 @@ const FormModal = ({ action, closeModal }) => {
   const form = useRef();
   const company = useSelector((state) => state.setItem);
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors }, } = useForm({
+  const { register, handleSubmit, setValue, formState: { errors }, } = useForm({
     resolver: yupResolver(companySchema),
   });
 
   useEffect(() => {
-    if (action === 'update') {
-      form.current.name.value = company.name;
-      form.current.constitutionDate.value = company.constitutionDate;
-      form.current.comments.value = company.comments;
+    console.log('naciendo');
+    if (action === 'update' && company) {
+      console.log(company);
+      setValue('name', company.name);
+      setValue('constitutionDate', company.constitutionDate);
+      setValue('typeId', company.company_type.id);
+      setValue('comments', company.comments);
     }
   }, []);
 
@@ -52,7 +55,7 @@ const FormModal = ({ action, closeModal }) => {
     };
     if (action === 'update') {
 
-      editCompany(company.id,data)
+      editCompany(company.id, data)
     }
     closeModal();
   };
@@ -66,24 +69,26 @@ const FormModal = ({ action, closeModal }) => {
       .catch(error => console.log(error))
   }
 
-  const editCompany=(id,params)=>{
-    axios.put(`${baseUrl}/api/v1/companies/${id}`,params)
-      .then(res=>{
+  const editCompany = (id, params) => {
+    axios.put(`${baseUrl}/api/v1/companies/${id}`, params)
+      .then(res => {
         console.log(res);
         dispatch(getCompanies());
       })
-      .catch(error=>console.log(error))
+      .catch(error => console.log(error))
   }
 
   const makeSelect = (items) => {
     return (
       <>
-        <option value="" defaultValue>Seleciona un valor</option>
-        {items.map((item, i) => <option value={item.id} key={item.id}>{item.name}</option >)}
+        <option value="" defaultValue>--Seleciona un valor--</option>
+        {
+          items.map((item, i) => <option value={item.id} key={item.id}>{item.name}</option >)
+        }
       </>
     )
   }
-  
+
   return (
     <>
       <form className=" modal-sm" onSubmit={handleSubmit(sendForm)} ref={form}>
@@ -94,9 +99,9 @@ const FormModal = ({ action, closeModal }) => {
             placeholder="name"
             aria-describedby="name"
             {...register('name')}
-            autoFocus
+          // autoFocus
           />
-          <label htmlFor="name">Nombre</label>
+          <label htmlFor="name">Nombre*</label>
           {errors.name?.message && (
             <div className="alert alert-primary my-2 p-1" role="alert">
               {errors.name.message}
@@ -106,7 +111,7 @@ const FormModal = ({ action, closeModal }) => {
         {/* Constitution date */}
         <div className="mb-3">
           <label htmlFor="constitutionDate" className="form-label">
-            Fecha de constitución
+            Fecha de constitución*
           </label>
           <input
             type="date"
@@ -123,7 +128,7 @@ const FormModal = ({ action, closeModal }) => {
         {/* Company type */}
         <div className="mb-3">
           <label htmlFor="company-type" className="form-label">
-            Tipo de empresa
+            Tipo de empresa*
           </label>
           <br />
           <select
@@ -135,6 +140,7 @@ const FormModal = ({ action, closeModal }) => {
             {
               companyTypes && makeSelect(companyTypes)
             }
+            
           </select>
           {errors.typeId?.message && (
             <div className="alert alert-primary my-2 p-1" role="alert">
