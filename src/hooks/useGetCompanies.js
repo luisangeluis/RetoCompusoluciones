@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const useGetCompanies = () => {
   const [companies, setCompanies] = useState();
-  const baseUrl = 'retocompusolucionesback-production.up.railway.app';
+  const baseUrl = 'https://retocompusolucionesback-production.up.railway.app';
 
   useEffect(() => {
     getCompanies();

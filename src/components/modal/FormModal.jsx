@@ -26,7 +26,7 @@ const companySchema = yup.object({
 });
 
 //Base url
-const baseUrl = 'retocompusolucionesback-production.up.railway.app';
+const baseUrl = 'https://retocompusolucionesback-production.up.railway.app';
 
 //Component
 const FormModal = ({ action, closeModal }) => {

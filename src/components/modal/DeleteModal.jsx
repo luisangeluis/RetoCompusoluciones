@@ -6,7 +6,7 @@ import { getCompanies, removeCompany } from "../../store/slices/getCompanies.sli
 import { setShowNotification } from "../../store/slices/showNotification.slice";
 
 //Base url
-const baseUrl = 'retocompusolucionesback-production.up.railway.app';
+const baseUrl = 'https://retocompusolucionesback-production.up.railway.app';
 
 const DeleteModal = ({ action, closeModal }) => {
   const dispatch =useDispatch();
