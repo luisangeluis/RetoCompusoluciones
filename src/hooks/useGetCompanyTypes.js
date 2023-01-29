@@ -13,7 +13,7 @@ const useGetCompanyTypes = () => {
   const getCompanyTypes = () => {
     axios.get(`${baseUrl}/api/v1/companyTypes`)
       .then(res => {
-        console.log(res.data.response);
+        // console.log(res.data.response);
         setCompanyTypes(res.data.response)
       })
       .catch(error => console.log(error))

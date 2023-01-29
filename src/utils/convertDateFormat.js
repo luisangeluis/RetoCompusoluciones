@@ -1,11 +1,15 @@
+import reverseDate from "./reverseData";
+
 //Format the date
 const convertDateFormat = (date) => {
-  const customDate = new Date(date);
-  const dateUtc = new Date(customDate.getUTCFullYear(), customDate.getUTCMonth(), customDate.getUTCDate(),
-    customDate.getUTCHours(), customDate.getUTCMinutes(), customDate.getUTCSeconds());
+  const fecha = new Date(date);
+  const fecha_utc = new Date(fecha.getUTCFullYear(), fecha.getUTCMonth(), fecha.getUTCDate(),
+    fecha.getUTCHours(), fecha.getUTCMinutes(), fecha.getUTCSeconds());
+  
+  console.log(fecha_utc.getUTCDate());
 
-  // console.log(dateUtc.toLocaleDateString());
-  return dateUtc.toLocaleDateString();
 }
+
+
 
 export default convertDateFormat;

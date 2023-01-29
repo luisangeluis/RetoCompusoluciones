@@ -2,10 +2,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import useGetCompanies from '../hooks/useGetCompanies';
 import convertDateFormat from '../utils/convertDateFormat';
+import moment from 'moment';
 //Slices
 import { setAddModal } from '../store/slices/addModal.slice';
 import { setItem } from '../store/slices/setItem.slice';
 import { setShowModal } from '../store/slices/showModal.slice';
+//Utils
+import reverseDate from '../utils/reverseData';
 
 const CompanyTable = () => {
   const dispatch = useDispatch();
@@ -13,6 +16,11 @@ const CompanyTable = () => {
   const companies = useSelector(state => state.getCompanies)
 
   const showModal = (modal, action, item) => {
+    // console.log(item);
+    // console.log(convertDateFormat(item.company_type.constitutionDate))
+    // item.constitutionDate = convertDateFormat(item.constitutionDate);
+    // console.log('hola',item.constitutionDate);
+
     dispatch(setItem(item));
     dispatch(setAddModal({ modal, action }));
     dispatch(setShowModal(true));
@@ -30,7 +38,7 @@ const CompanyTable = () => {
         <tr className="text-center fw-bold" key={company.id}>
           <td>{company.name.toUpperCase()}</td>
           <td>{company.company_type.name.toUpperCase()}</td>
-          <td>{convertDateFormat(company.constitutionDate)}</td>
+          <td>{moment(company.constitutionDate).utc().format('DD-MM-YYYY')}</td>
           <td className="text-center d-flex flex-nowrap justify-content-center">
             <button
               onClick={() =>

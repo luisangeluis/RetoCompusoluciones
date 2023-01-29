@@ -5,11 +5,16 @@ import * as yup from 'yup';
 import { useEffect, useReducer, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import moment from 'moment';
 //Slices
 import { getCompanies } from '../../store/slices/getCompanies.slice';
 import { setShowNotification } from '../../store/slices/showNotification.slice';
 //Hooks
 import useGetCompanyTypes from '../../hooks/useGetCompanyTypes';
+//Utils
+// import  convertDateFormat from '../../utils/convertDateFormat';
+import reverseDate from '../../utils/reverseData';
+import convertDateFormat from '../../utils/convertDateFormat';
 //Form schema
 const companySchema = yup.object({
   name: yup
@@ -39,11 +44,11 @@ const FormModal = ({ action, closeModal }) => {
   });
 
   useEffect(() => {
-    console.log('naciendo');
+    // console.log('naciendo');
     if (action === 'update' && company) {
-      console.log(company);
+      console.log(moment(company.constitutionDate).utc().format('YYYY-MM-DD'));
       setValue('name', company.name);
-      setValue('constitutionDate', company.constitutionDate);
+      setValue('constitutionDate',moment(company.constitutionDate).utc().format('YYYY-MM-DD'));
       setValue('typeId', company.company_type.id);
       setValue('comments', company.comments);
     }

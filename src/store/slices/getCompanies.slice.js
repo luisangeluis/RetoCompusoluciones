@@ -18,7 +18,7 @@ export const { setGetCompanies} = getCompaniesSlice.actions;
 export const getCompanies =()=>(dispatch)=>{
   axios.get(`${baseUrl}/api/v1/companies`)
       .then(res => {
-        console.log(res.data.response);
+        // console.log(res.data.response);
         dispatch(setGetCompanies(res.data.response))
       })
       .catch(error => console.log(error))
