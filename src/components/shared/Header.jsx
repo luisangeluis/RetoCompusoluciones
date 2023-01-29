@@ -1,17 +1,22 @@
-import { useEffect, useState } from 'react';
+//Dependencies
 import { useDispatch } from 'react-redux';
+//Slices
+import { setAddModal } from '../../store/slices/addModal.slice';
 import { setShowModal } from '../../store/slices/showModal.slice';
 const Header = () => {
   const dispatch = useDispatch();
 
-  const showModal = () => dispatch(setShowModal(true));
-  // console.log();
+  const showModal = (modal, action) => {
+    dispatch(setAddModal({ modal, action }));
+    dispatch(setShowModal(true));
+  };
+
   return (
     <section className="header">
       <div className="container-fluid header-container">
         <nav className="navbar navbar-expand-lg fw-bolder">
           <div className="container navbar-container">
-            <a className="navbar-brand fw-bold" href="#">
+            <a className="navbar-brand fw-bold" href="/">
               EMPRESAS
             </a>
             <button
@@ -28,15 +33,18 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav p-2 p-md-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <a className="nav-link active" aria-current="page" href="/">
                     Inicio
                   </a>
                 </li>
               </ul>
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <button className="btn bg-color-three" onClick={showModal}>
-                    Agregar empresa +
+                  <button
+                    className="btn bg-color-three fw-bold"
+                    onClick={() => showModal('FormModal', 'create')}
+                  >
+                    Agregar empresa <i className="fa-solid fa-plus"></i>
                   </button>
                 </li>
               </ul>

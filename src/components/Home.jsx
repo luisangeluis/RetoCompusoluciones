@@ -1,12 +1,23 @@
+//Dependencies
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+//Slice
+import  { getCompanies } from '../store/slices/getCompanies.slice';
 //Components
-import { useSelector } from 'react-redux';
-import FormModal from './modal/FormModal';
 import CompanyTable from './CompanyTable';
+import ModalContainer from './modal/ModalContainer';
+import Notification from './modal/Notification';
 
 const Home = () => {
+  const dispatch = useDispatch();
   const isShowForm = useSelector((state) => state.showModal);
-  // console.log(isShowForm);
+  const showNotification =useSelector(state=>state.showNotification);
+  const allCompanies = useSelector(state=> state.getCompanies);
 
+  useEffect(()=>{
+    dispatch(getCompanies())
+  } ,[])
+  
   return (
     <section className="home flex-grow-1">
       <div className="container">
@@ -17,7 +28,8 @@ const Home = () => {
         </div>
         <div className="row"></div>
       </div>
-      {isShowForm && <FormModal />}
+      {isShowForm && <ModalContainer />}
+      {showNotification?.show ? <Notification message={showNotification.message}/>:''}
     </section>
   );
 };

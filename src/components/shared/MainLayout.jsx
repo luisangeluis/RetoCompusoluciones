@@ -1,3 +1,4 @@
+//Dependencies
 import { Outlet } from 'react-router-dom';
 //Components
 import Footer from './Footer';

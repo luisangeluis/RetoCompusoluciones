@@ -17,12 +17,12 @@ body {
   background: -webkit-linear-gradient(
     to top,
     #dcd7c9,
-    /* #28304810 */ #a27b5c
+    #a27b5c
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
     #dcd7c9,
-    /* #28304810 */ #3f4e4f80
+    #3f4e4f99
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 body,
@@ -47,6 +47,12 @@ body,
 .bg-color-four {
   background-color: #dcd7c9;
 }
+.bg-color-three:hover
+/* button.bg-color-three:hover  */
+{
+  background-color: #0f0f0f;
+  color: #fff;
+}
 
 /********************HEADER********************/
 .header {
@@ -61,10 +67,6 @@ body,
   padding: 2.5rem 0;
   font-size: 1.5rem;
 }
-.navbar-nav {
-  /* font-weight: bold; */
-  /* font-size: 1.3rem; */
-}
 .navbar-brand {
   margin: 0;
   font-size: 1.8rem;
@@ -78,6 +80,7 @@ body,
 .table-responsive {
   background-color: #fff;
 }
+
 /********************Modal********************/
 
 .datalist-empresa {
@@ -88,17 +91,26 @@ body,
 }
 .modal-container {
   width: 90%;
-  animation: fromLeftAnimation 1.2s;
+  animation: fromUpAnimation 1.2s;
   opacity: 1;
 }
-/********************Modal********************/
+/********************footer********************/
 .footer {
   min-height: 5rem;
   color: #f0f0f0;
   background-color: #212529;
 }
+/********************Notifications********************/
+.toast{
+  top: 0;
+  right: 0;
+  animation: fromUpAnimation 2s;
+  transition: translateY ease-in-out 2s;
+  /* opacity: 1; */
+}
+
 /********************Animations********************/
-@keyframes fromLeftAnimation {
+@keyframes fromUpAnimation {
   0% {
     transform: translateY(-100px);
     opacity: 0.33;
@@ -106,7 +118,7 @@ body,
 
   50% {
     transform: translateY(3px);
-    opacity: 0.66;
+    /* opacity: 0.66; */
   }
 
   100% {
