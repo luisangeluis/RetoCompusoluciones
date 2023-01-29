@@ -1,5 +1,4 @@
 //Dependencies
-import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 //Slices
 import { setAddModal } from '../../store/slices/addModal.slice';
@@ -12,11 +11,6 @@ const Header = () => {
     dispatch(setShowModal(true));
   };
 
-  // const addCompany = () => {
-  //   console.log('adding...');
-  // };
-
-  // console.log();
   return (
     <section className="header">
       <div className="container-fluid header-container">

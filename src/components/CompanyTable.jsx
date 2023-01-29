@@ -26,10 +26,9 @@ const CompanyTable = () => {
 
     return (
       orderedCompanies.map(company => (
-
         <tr className="text-center" key={company.id}>
-          <td>{company.name}</td>
-          <td>{company.company_type.name}</td>
+          <td>{company.name.toUpperCase()}</td>
+          <td>{company.company_type.name.toUpperCase()}</td>
           <td>{convertDateFormat(company.constitutionDate)}</td>
           <td className="text-center d-flex flex-nowrap justify-content-center">
             <button
@@ -38,7 +37,7 @@ const CompanyTable = () => {
               }
               className="btn btn-danger mx-1"
             >
-              borrar
+              Borrar
             </button>
             <button
               onClick={() =>
@@ -70,32 +69,6 @@ const CompanyTable = () => {
             <tbody className="table-group-divider">
               {
                 companies && makeTableTr(companies)
-                // companies && companies.map(company => (
-
-                //   <tr className="text-center" key={company.id}>
-                //     <td>{company.name}</td>
-                //     <td>{company.company_type.name}</td>
-                //     <td>{convertDateFormat(company.constitutionDate)}</td>
-                //     <td className="text-center d-flex flex-nowrap justify-content-center">
-                //       <button
-                //         onClick={() =>
-                //           showModal('DeleteModal', 'delete', company)
-                //         }
-                //         className="btn btn-danger mx-1"
-                //       >
-                //         borrar
-                //       </button>
-                //       <button
-                //         onClick={() =>
-                //           showModal('FormModal', 'update', company)
-                //         }
-                //         className="btn bg-color-three mx-1"
-                //       >
-                //         Actualizar
-                //       </button>
-                //     </td>
-                //   </tr>
-                // ))
               }
             </tbody>
           </table>
@@ -103,7 +76,6 @@ const CompanyTable = () => {
           <h2 className='card-title'>Sin empresas...</h2>
         )
       }
-
     </div>
   );
 };

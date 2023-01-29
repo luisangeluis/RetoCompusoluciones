@@ -1,6 +1,6 @@
+//Dependencies
 import axios from "axios";
 import { useEffect, useState } from "react"
-
 
 const useGetCompanyTypes = () => {
   const [companyTypes, setCompanyTypes] = useState();

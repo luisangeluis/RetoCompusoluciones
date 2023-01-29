@@ -90,10 +90,10 @@ button.bg-color-three:hover {
 }
 .modal-container {
   width: 90%;
-  animation: fromLeftAnimation 1.2s;
+  animation: fromUpAnimation 1.2s;
   opacity: 1;
 }
-/********************Modal********************/
+/********************footer********************/
 .footer {
   min-height: 5rem;
   color: #f0f0f0;
@@ -102,10 +102,14 @@ button.bg-color-three:hover {
 /********************Notifications********************/
 .toast{
   top: 0;
+  right: 0;
+  animation: fromUpAnimation 2s;
+  transition: translateY ease-in-out 2s;
+  /* opacity: 1; */
 }
 
 /********************Animations********************/
-@keyframes fromLeftAnimation {
+@keyframes fromUpAnimation {
   0% {
     transform: translateY(-100px);
     opacity: 0.33;
@@ -113,7 +117,7 @@ button.bg-color-three:hover {
 
   50% {
     transform: translateY(3px);
-    opacity: 0.66;
+    /* opacity: 0.66; */
   }
 
   100% {

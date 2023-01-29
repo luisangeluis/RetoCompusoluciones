@@ -22,7 +22,7 @@ const companySchema = yup.object({
   typeId: yup
     .string()
     .required('Este campo es requerido'),
-  comments: yup.string().max(1020),
+  comments: yup.string().max(1020).nullable(),
 });
 
 //Base url
@@ -48,7 +48,7 @@ const FormModal = ({ action, closeModal }) => {
       setValue('comments', company.comments);
     }
   }, []);
-
+  
   const sendForm = (data) => {
     console.log(data);
     if (action === 'create') {
@@ -73,7 +73,7 @@ const FormModal = ({ action, closeModal }) => {
       .finally(()=>{
         setTimeout(()=>{
           dispatch(setShowNotification({message:'',show:false}))
-        },1500)
+        },4000)
       });
   }
 
@@ -88,7 +88,7 @@ const FormModal = ({ action, closeModal }) => {
       .finally(()=>{
         setTimeout(()=>{
           dispatch(setShowNotification({message:'',show:false}))
-        },30000)
+        },4000)
       });
   }
 
@@ -180,8 +180,8 @@ const FormModal = ({ action, closeModal }) => {
         </div>
         {/* Submit */}
         <div className="mb-3">
-          <input type="submit" className="btn bg-color-three" value="Enviar" />
-          <button onClick={closeModal} className="btn btn-secondary">
+          <input type="submit" className="btn bg-color-three mx-1" value="Enviar" />
+          <button onClick={closeModal} className="btn btn-secondary mx-1">
             Cancelar
           </button>
         </div>

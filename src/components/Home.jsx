@@ -1,6 +1,6 @@
 //Dependencies
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 //Slice
 import  { getCompanies } from '../store/slices/getCompanies.slice';
 //Components
@@ -13,7 +13,6 @@ const Home = () => {
   const isShowForm = useSelector((state) => state.showModal);
   const showNotification =useSelector(state=>state.showNotification);
   const allCompanies = useSelector(state=> state.getCompanies);
-  // const [companies,setCompanies] = useState();
 
   useEffect(()=>{
     dispatch(getCompanies())

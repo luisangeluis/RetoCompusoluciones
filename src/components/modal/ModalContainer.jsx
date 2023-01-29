@@ -24,14 +24,10 @@ const ModalContainer = ({ modal, action }) => {
   const closeModal = () => {
     dispatch(setShowModal(false))
   }
-
   
-
   return (
     <section
       className="modal position-fixed top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100 h-100"
-      // onKeyDown={onKeyPressed}
-      // tabIndex="0"
     >
       <div className="container bg-color-four rounded p-2 p-md-3 modal-container">
         <button

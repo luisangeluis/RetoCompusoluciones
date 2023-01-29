@@ -19,7 +19,7 @@ const DeleteModal = ({ action, closeModal }) => {
     console.log('deleting');
     closeModal();
   };
-
+  
   const remove=(id)=>{
     axios.delete(`${baseUrl}/api/v1/companies/${id}`)
       .then(res=> {
@@ -31,7 +31,7 @@ const DeleteModal = ({ action, closeModal }) => {
       .finally(()=>{
         setTimeout(()=>{
           dispatch(setShowNotification({message:'',show:false}))
-        },1500)
+        },4000)
       });
   }
 

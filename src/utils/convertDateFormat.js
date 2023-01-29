@@ -1,3 +1,4 @@
+//Format the date
 const convertDateFormat=(string)=> {
   var info = string.split('-').reverse().join('/');
   return info;
