@@ -35,17 +35,17 @@ const CompanyTable = () => {
               onClick={() =>
                 showModal('DeleteModal', 'delete', company)
               }
-              className="btn btn-danger mx-1"
+              className="btn btn-danger mx-1 fw-bold"
             >
-              Borrar
+              Borrar <i className="fa-sharp fa-solid fa-trash"></i>
             </button>
             <button
               onClick={() =>
                 showModal('FormModal', 'update', company)
               }
-              className="btn bg-color-three mx-1"
+              className="btn bg-color-three mx-1 fw-bold"
             >
-              Actualizar
+              Actualizar <i className="fa-solid fa-pen"></i>
             </button>
           </td>
         </tr>

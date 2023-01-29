@@ -16,7 +16,7 @@ const Header = () => {
       <div className="container-fluid header-container">
         <nav className="navbar navbar-expand-lg fw-bolder">
           <div className="container navbar-container">
-            <a className="navbar-brand fw-bold" href="#">
+            <a className="navbar-brand fw-bold" href="/">
               EMPRESAS
             </a>
             <button
@@ -33,7 +33,7 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav p-2 p-md-3">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <a className="nav-link active" aria-current="page" href="/">
                     Inicio
                   </a>
                 </li>
@@ -41,10 +41,10 @@ const Header = () => {
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
                   <button
-                    className="btn bg-color-three"
+                    className="btn bg-color-three fw-bold"
                     onClick={() => showModal('FormModal', 'create')}
                   >
-                    Agregar empresa +
+                    Agregar empresa <i className="fa-solid fa-plus"></i>
                   </button>
                 </li>
               </ul>
