@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'retocompusolucionesback-production.up.railway.app';
 
 const getCompaniesSlice =createSlice({
   name: 'getCompanies',
