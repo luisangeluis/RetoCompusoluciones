@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 const useGetCompanyTypes = () => {
   const [companyTypes, setCompanyTypes] = useState();
-  const baseUrl = 'http://localhost:3000';
+  const baseUrl = 'retocompusolucionesback-production.up.railway.app';
 
   useEffect(()=>{
     getCompanyTypes();
