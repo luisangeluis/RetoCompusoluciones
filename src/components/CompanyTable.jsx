@@ -23,10 +23,11 @@ const CompanyTable = () => {
 
     orderedCompanies = JSON.parse(orderedCompanies)
     orderedCompanies.sort((a, b) => a.name.localeCompare(b.name))
-
+    // console.log(new Date(Date.UTC(companies[0]?.constitutionDate)).toLocaleDateString());
+    
     return (
       orderedCompanies.map(company => (
-        <tr className="text-center" key={company.id}>
+        <tr className="text-center fw-bold" key={company.id}>
           <td>{company.name.toUpperCase()}</td>
           <td>{company.company_type.name.toUpperCase()}</td>
           <td>{convertDateFormat(company.constitutionDate)}</td>
@@ -35,17 +36,17 @@ const CompanyTable = () => {
               onClick={() =>
                 showModal('DeleteModal', 'delete', company)
               }
-              className="btn btn-danger mx-1 fw-bold"
+              className="btn btn-danger mx-1 fw-bold d-flex justify-content-center align-items-center"
             >
-              Borrar <i className="fa-sharp fa-solid fa-trash"></i>
+              Borrar <i className="fa-sharp fa-solid fa-trash mx-1"></i>
             </button>
             <button
               onClick={() =>
                 showModal('FormModal', 'update', company)
               }
-              className="btn bg-color-three mx-1 fw-bold"
+              className="btn btn-sm bg-color-three mx-1 fw-bold d-flex justify-content-center align-items-center"
             >
-              Actualizar <i className="fa-solid fa-pen"></i>
+              Actualizar<i className="fa-solid fa-pen mx-1"></i>
             </button>
           </td>
         </tr>
